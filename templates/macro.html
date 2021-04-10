@@ -1,0 +1,23 @@
+{% macro show_links(user) %}
+
+<ul class="nav navbar-nav">
+    <li class="active"><a href="/">Home</a></li>
+    {% if not user %}
+    <li><a href="/login">Login</a></li>
+    <li><a href="/register">Register</a></li>
+    {% endif %}
+    {% if user and not user["admin"] and not user["expert"]%}
+    <li><a href="/ask">Ask Question</a></li>
+    {% endif %}
+    {% if user and user["expert"]%}
+    <li><a href="/unanswered">Answer Questions</a></li>            
+    {% endif %}
+    {% if user and user["admin"]%}
+    <li><a href="/users">User Setup</a></li>            
+    {% endif %}
+    {% if user %}     
+    <li><a href="/logout">Logout</a></li>
+    {% endif %}
+  </ul>
+
+{% endmacro %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "macro.html" import show_links %}
+{% block title %}
+  Question
+{% endblock title %}
+{% block nav %}
+{{show_links(user)}}
+{% endblock nav %}
+{% block body %}
+<div class="jumbotron">
+  <h1>{{question.question_text}}</h1>
+  <p>This is the answer.</p>
+  <p><a class="btn btn-primary btn-lg">Asked By: {{question.askedname}}</a></p>
+  <p><a class="btn btn-primary btn-lg">Answered By: {{question.expertname}}</a></p>
+</div>
+{% endblock body %}
+

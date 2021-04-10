@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "macro.html" import show_links %}
+{% block title %}
+  Users
+{% endblock title %}
+{% block nav %}
+{{show_links(user)}}
+{% endblock nav %}
+
+{% block body %}
+<div class="page-header">
+  <h1>Users</h1>
+  <h6>Click to promote to expert</h6>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="list-group">
+      <!-- <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Admin</h4>
+      </a>
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">{{session.user}}</h4>
+      </a>
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">Users</h4>
+      </a> -->
+      {% for user in users %}
+      <a href="/promote/{{user.id}}" class="list-group-item {% if user['expert'] == 1 %}active{% endif %}">
+        <h4 class="list-group-item-heading">{{user.name}}</h4>
+      </a>
+      {% endfor %}
+    </div>
+  </div><!-- /.col-lg-12 -->
+</div>
+{% endblock body %}
+
+
+
